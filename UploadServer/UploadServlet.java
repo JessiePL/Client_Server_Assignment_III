@@ -79,6 +79,11 @@ protected void doPost(HttpServletRequest request, HttpServletResponse response) 
               }
           }
       }
+
+       if (boundary == null) {
+            throw new InvalidUploadException("Missing multipart boundary in request header.");
+        }
+       
       System.out.println("Boundary = " + boundary);
       String[] parts = body.split(boundary);
 
